@@ -1,9 +1,24 @@
 # BenchFlow
 
+[![CI](https://github.com/yeongseon/benchflow/actions/workflows/ci.yml/badge.svg)](https://github.com/yeongseon/benchflow/actions/workflows/ci.yml)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+[![PyPI](https://img.shields.io/pypi/v/benchflow.svg)](https://pypi.org/project/benchflow/)
+
 Research-grade, scenario-based database benchmark platform for DB researchers and engineers.
 
 Compare different DB access stacks — driver, ORM, language — under identical workloads with statistical rigor suitable for academic publication (VLDB, SIGMOD, OSDI) and professional engineering evaluation.
 
+## Why BenchFlow?
+
+Most database benchmark scripts are one-off, ad-hoc, and produce results that cannot be reproduced or trusted. BenchFlow addresses this by providing:
+
+- **Statistical rigor** — Multi-iteration experiments with bootstrap confidence intervals, not single-run "eyeball" comparisons
+- **Reproducibility** — Seed control, full environment capture, setup/teardown isolation, and versioned result schemas
+- **Publication quality** — Reports designed for academic papers: ECDF plots, CI error bars, booktabs tables, colorblind-safe palette
+- **Apples-to-apples comparison** — Run the exact same workload across different drivers, ORMs, or languages with `bench compare`
+
+BenchFlow is **not** a distributed load generator, a database provisioning tool, or a replacement for TPC benchmarks. It is a focused tool for comparing database access stacks under controlled conditions.
 ## Key Features
 
 - **Multi-iteration experiments** with seed control for reproducibility
