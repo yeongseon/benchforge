@@ -159,8 +159,8 @@ class TestSmoke:
         assert step.name == "point-select"
         assert step.ops > 0
         assert step.throughput_ops_s > 0
-        assert step.latency.p50_ns > 0
-        assert step.latency.p99_ns >= step.latency.p50_ns
+        assert step.latency_summary.p50_ns > 0
+        assert step.latency_summary.p99_ns >= step.latency_summary.p50_ns
         assert step.errors == 0
 
     def test_multi_iteration_psycopg(self):
@@ -331,8 +331,8 @@ class TestResultArtifacts:
         step = parsed["targets"][0]["steps"][0]
         assert isinstance(step["ops"], int)
         assert isinstance(step["throughput_ops_s"], (int, float))
-        assert isinstance(step["latency"]["p50_ns"], int)
-        assert isinstance(step["latency"]["p99_ns"], int)
+        assert isinstance(step["latency_summary"]["p50_ns"], (int, float))
+        assert isinstance(step["latency_summary"]["p99_ns"], (int, float))
 
     def test_result_written_to_file(self):
         """Result should write to a file and be readable."""
@@ -365,8 +365,8 @@ class TestResultArtifacts:
         scenario = _make_scenario(concurrency=4, duration=3)
         result = run_benchmark(scenario)
 
-        lat = result.targets[0].steps[0].latency
-        assert lat.min_ns <= lat.p50_ns <= lat.p90_ns <= lat.p99_ns <= lat.max_ns
+        lat = result.targets[0].steps[0].latency_summary
+        assert lat.min_ns <= lat.p50_ns <= lat.p95_ns <= lat.p99_ns <= lat.max_ns
 
     def test_seed_recorded_in_result(self):
         """Experiment seed should be recorded in the result."""
