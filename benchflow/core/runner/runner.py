@@ -43,6 +43,24 @@ from benchflow.core.result import (
 from benchflow.core.scenario.schema import Scenario, Step, TargetConfig
 from benchflow.workers.protocol import Worker, get_worker_factory
 
+# Lazy import to avoid circular deps — used only when external targets are present
+_run_external_target = None
+
+
+def _get_external_runner():  # noqa: ANN202
+    global _run_external_target
+    if _run_external_target is None:
+        from benchflow.workers.external.subprocess_worker import (
+            run_external_target as _fn,
+        )
+        _run_external_target = _fn
+    return _run_external_target
+
+
+def _is_external_target(target: TargetConfig) -> bool:
+    """A target is external if its worker_config contains a 'command' key."""
+    return "command" in target.worker_config
+
 logger = logging.getLogger(__name__)
 
 MAX_ERROR_SAMPLES = 50
@@ -423,8 +441,8 @@ def run_benchmark(
         elif "cubrid" in dsn:
             db_kind = "cubrid"
 
-        # Optionally introspect DB
-        if capture_db_info:
+        # Optionally introspect DB (skip for external targets — info comes from their output)
+        if capture_db_info and not _is_external_target(target):
             try:
                 info = _introspect_target(target)
                 if "server_version" in info:
@@ -482,68 +500,93 @@ def run_benchmark(
         iteration_targets: list[TargetResult] = []
 
         for target in scenario.targets:
-            # Create a setup/teardown worker
-            factory_cls = get_worker_factory(target.stack_id)
-            factory = factory_cls()
-            setup_worker: Worker | None = None
+            if _is_external_target(target):
+                # --- External (subprocess) worker path ---
+                # The external process handles setup, warmup, measurement, and
+                # teardown internally. We just spawn it and collect JSON results.
+                logger.info("Running external target: %s", target.stack_id)
+                try:
+                    ext_runner = _get_external_runner()
+                    target_result = ext_runner(scenario, target, seed=iter_seed)
+                except Exception as exc:
+                    logger.error("External worker %s failed: %s", target.stack_id, exc)
+                    raise
 
-            try:
-                # Execute setup queries if defined
-                if scenario.setup and scenario.setup.queries:
-                    setup_worker = factory.create(-1)  # Special index for setup worker
-                    setup_worker.setup(
-                        dsn=target.dsn,
-                        worker_config=target.worker_config,
-                        scenario=scenario,
-                    )
-                    setup_worker.open()
-                    _execute_setup_queries(setup_worker, scenario.setup.queries)
-                    setup_worker.close()
-                    setup_worker = None
-
-                # Run the actual benchmark iteration
-                logger.info("Running target: %s", target.stack_id)
-                target_result = run_target(scenario, target, rng=iter_rng)
                 iteration_targets.append(target_result)
 
-                # Track for cross-iteration aggregation
                 if target.stack_id not in per_stack_steps:
                     per_stack_steps[target.stack_id] = []
                 per_stack_steps[target.stack_id].append(target_result.steps)
 
                 logger.info(
-                    "Target %s completed: %d ops, status=%s",
+                    "External target %s completed: %d ops, status=%s",
                     target.stack_id,
                     sum(s.ops for s in target_result.steps),
                     target_result.status,
                 )
+            else:
+                # --- In-process (Python) worker path ---
+                factory_cls = get_worker_factory(target.stack_id)
+                factory = factory_cls()
+                setup_worker: Worker | None = None
 
-            finally:
-                # Execute teardown queries if defined
-                if scenario.teardown and scenario.teardown.queries:
-                    td_worker = factory.create(-1)
-                    td_worker.setup(
-                        dsn=target.dsn,
-                        worker_config=target.worker_config,
-                        scenario=scenario,
+                try:
+                    # Execute setup queries if defined
+                    if scenario.setup and scenario.setup.queries:
+                        setup_worker = factory.create(-1)  # Special index for setup worker
+                        setup_worker.setup(
+                            dsn=target.dsn,
+                            worker_config=target.worker_config,
+                            scenario=scenario,
+                        )
+                        setup_worker.open()
+                        _execute_setup_queries(setup_worker, scenario.setup.queries)
+                        setup_worker.close()
+                        setup_worker = None
+
+                    # Run the actual benchmark iteration
+                    logger.info("Running target: %s", target.stack_id)
+                    target_result = run_target(scenario, target, rng=iter_rng)
+                    iteration_targets.append(target_result)
+
+                    # Track for cross-iteration aggregation
+                    if target.stack_id not in per_stack_steps:
+                        per_stack_steps[target.stack_id] = []
+                    per_stack_steps[target.stack_id].append(target_result.steps)
+
+                    logger.info(
+                        "Target %s completed: %d ops, status=%s",
+                        target.stack_id,
+                        sum(s.ops for s in target_result.steps),
+                        target_result.status,
                     )
-                    try:
-                        td_worker.open()
-                        _execute_teardown_queries(td_worker, scenario.teardown.queries)
-                        td_worker.close()
-                    except Exception as exc:
-                        logger.warning("Teardown failed for %s: %s", target.stack_id, exc)
+
+                finally:
+                    # Execute teardown queries if defined
+                    if scenario.teardown and scenario.teardown.queries:
+                        td_worker = factory.create(-1)
+                        td_worker.setup(
+                            dsn=target.dsn,
+                            worker_config=target.worker_config,
+                            scenario=scenario,
+                        )
                         try:
+                            td_worker.open()
+                            _execute_teardown_queries(td_worker, scenario.teardown.queries)
                             td_worker.close()
+                        except Exception as exc:
+                            logger.warning("Teardown failed for %s: %s", target.stack_id, exc)
+                            try:
+                                td_worker.close()
+                            except Exception:
+                                pass
+
+                    # Close setup worker if still open (error path)
+                    if setup_worker is not None:
+                        try:
+                            setup_worker.close()
                         except Exception:
                             pass
-
-                # Close setup worker if still open (error path)
-                if setup_worker is not None:
-                    try:
-                        setup_worker.close()
-                    except Exception:
-                        pass
 
         # Build iteration result
         iter_result = IterationResult(

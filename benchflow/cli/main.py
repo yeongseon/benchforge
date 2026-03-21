@@ -11,6 +11,17 @@ from rich.table import Table
 
 import benchflow.workers.python.psycopg_worker  # noqa: F401, E402  # pyright: ignore[reportUnusedImport]
 import benchflow.workers.python.sqlalchemy_worker  # noqa: F401, E402  # pyright: ignore[reportUnusedImport]
+
+# Optional workers — loaded when their driver packages are installed
+try:
+    import benchflow.workers.python.pycubrid_worker  # noqa: F401, E402  # pyright: ignore[reportUnusedImport]
+except ImportError:
+    pass
+
+try:
+    import benchflow.workers.python.pymysql_worker  # noqa: F401, E402  # pyright: ignore[reportUnusedImport]
+except ImportError:
+    pass
 from benchflow.core.result import CompareResult, ComparisonItem, RunResult
 
 app = typer.Typer(
