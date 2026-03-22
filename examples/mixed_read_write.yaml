@@ -2,7 +2,7 @@
 # Mixed Read/Write — Realistic OLTP with INSERTs, UPDATEs, and SELECTs
 # ============================================================================
 # Simulates a realistic transactional workload where reads and writes
-# are interleaved. BenchFlow randomly selects one step per operation,
+# are interleaved. BenchForge randomly selects one step per operation,
 # so the step distribution reflects real application access patterns.
 #
 # Workload mix (per step selection):
@@ -81,9 +81,9 @@ targets:
   - name: psycopg-raw
     stack_id: python+psycopg
     driver: psycopg
-    dsn: "postgresql://postgres:postgres@localhost:5432/benchflow"
+    dsn: "postgresql://postgres:postgres@localhost:5432/benchforge"
 
   - name: sqlalchemy-core
     stack_id: python+sqlalchemy
     driver: sqlalchemy
-    dsn: "postgresql+psycopg://postgres:postgres@localhost:5432/benchflow"
+    dsn: "postgresql+psycopg://postgres:postgres@localhost:5432/benchforge"

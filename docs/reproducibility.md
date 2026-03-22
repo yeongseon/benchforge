@@ -12,7 +12,7 @@ A benchmark result is only as useful as its reproducibility. Without it:
 - Colleagues cannot build on your work
 - You cannot reliably detect regressions
 
-BenchFlow provides the infrastructure for reproducible benchmarks. This
+BenchForge provides the infrastructure for reproducible benchmarks. This
 checklist ensures you use it correctly.
 
 ---
@@ -74,7 +74,7 @@ load:
 ### 5. Capture Environment
 
 - [ ] Use `--capture-db-info` to record database server configuration
-- [ ] BenchFlow automatically captures: hostname, OS, CPU, memory, Python version
+- [ ] BenchForge automatically captures: hostname, OS, CPU, memory, Python version
 
 ```bash
 bench run scenario.yaml --capture-db-info -v
@@ -120,7 +120,7 @@ bench run scenario.yaml --capture-db-info -v
 
 When publishing results, always include:
 
-- [ ] **BenchFlow version** (`benchflow.__version__`)
+- [ ] **BenchForge version** (`benchflow.__version__`)
 - [ ] **Scenario file** (verbatim, or as an appendix)
 - [ ] **Random seed** used
 - [ ] **Number of iterations** and pause duration
@@ -132,8 +132,8 @@ When publishing results, always include:
 
 - [ ] Save the raw JSON result files (not just the HTML report)
 - [ ] Store the exact scenario YAML used
-- [ ] Pin BenchFlow version in your requirements
-- [ ] Consider `CITATION.cff` for citing BenchFlow in your paper
+- [ ] Pin BenchForge version in your requirements
+- [ ] Consider `CITATION.cff` for citing BenchForge in your paper
 
 ---
 
@@ -147,16 +147,16 @@ When publishing results, always include:
 | Short duration (< 5s) | Startup transients dominate | Use `duration: 10+` |
 | No setup/teardown | Database state drift across iterations | Add setup + teardown |
 | Ignoring CV | Publishing unstable results | Check CV < 15% |
-| Pooling ops across iterations | Underestimating variance | BenchFlow does this correctly by default |
+| Pooling ops across iterations | Underestimating variance | BenchForge does this correctly by default |
 | Missing environment metadata | Results cannot be reproduced | Use `--capture-db-info` |
 
 ---
 
 ## For Academic Papers
 
-If you are including BenchFlow results in a paper:
+If you are including BenchForge results in a paper:
 
-1. **Cite BenchFlow** using the `CITATION.cff` file in the repository
+1. **Cite BenchForge** using the `CITATION.cff` file in the repository
 2. **Include the scenario YAML** as a listing or appendix
 3. **Report all parameters** (iterations, seed, concurrency, duration, warmup)
 4. **Show confidence intervals** — use the aggregate statistics table or CI error bars
@@ -165,7 +165,7 @@ If you are including BenchFlow results in a paper:
 
 ### Example Reporting
 
-> We evaluated psycopg3 and SQLAlchemy Core using BenchFlow v0.1.0 with
+> We evaluated psycopg3 and SQLAlchemy Core using BenchForge v0.1.0 with
 > 5 iterations (seed=42), 4 concurrent threads, 10-second measurement
 > windows after 3-second warmup, and 2-second pauses between iterations.
 > Results show psycopg3 achieves 1.42x higher throughput (95% CI:

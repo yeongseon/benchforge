@@ -1,15 +1,15 @@
 cff-version: 1.2.0
-title: "BenchFlow: Research-Grade Database Benchmark Platform"
+title: "BenchForge: Research-Grade Database Benchmark Platform"
 message: >-
-  If you use BenchFlow in your research, please cite it using
+  If you use BenchForge in your research, please cite it using
   the metadata from this file.
 type: software
 authors:
   - family-names: Choe
     given-names: Yeongseon
     email: yeongseon.choe@gmail.com
-repository-code: "https://github.com/yeongseon/benchflow"
-url: "https://github.com/yeongseon/benchflow"
+repository-code: "https://github.com/yeongseon/benchforge"
+url: "https://github.com/yeongseon/benchforge"
 license: MIT
 version: 0.1.0
 date-released: "2026-03-19"
@@ -21,9 +21,9 @@ keywords:
   - reproducibility
   - statistics
 abstract: >-
-  BenchFlow is a scenario-based database benchmark platform designed
+  BenchForge is a scenario-based database benchmark platform designed
   for researchers and engineers. It provides multi-iteration experiments
   with bootstrap confidence intervals, HDR histogram latency recording,
-  time-series collection, and publication-quality HTML reports. BenchFlow
+  time-series collection, and publication-quality HTML reports. BenchForge
   enables reproducible, statistically rigorous comparisons of database
   access stacks (drivers, ORMs, languages) under identical workloads.

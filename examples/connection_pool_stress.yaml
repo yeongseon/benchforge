@@ -2,7 +2,7 @@
 # Connection Pool Stress — High-concurrency connection churn
 # ============================================================================
 # Stresses the database connection subsystem with high concurrency.
-# Each BenchFlow worker opens its own connection, so concurrency=32 means
+# Each BenchForge worker opens its own connection, so concurrency=32 means
 # 32 simultaneous connections executing queries.
 #
 # This benchmark reveals:
@@ -60,9 +60,9 @@ targets:
   - name: psycopg-raw
     stack_id: python+psycopg
     driver: psycopg
-    dsn: "postgresql://postgres:postgres@localhost:5432/benchflow"
+    dsn: "postgresql://postgres:postgres@localhost:5432/benchforge"
 
   - name: sqlalchemy-core
     stack_id: python+sqlalchemy
     driver: sqlalchemy
-    dsn: "postgresql+psycopg://postgres:postgres@localhost:5432/benchflow"
+    dsn: "postgresql+psycopg://postgres:postgres@localhost:5432/benchforge"

@@ -1,6 +1,6 @@
 # Architecture
 
-This document describes BenchFlow's internal architecture, component design,
+This document describes BenchForge's internal architecture, component design,
 and extension points.
 
 ## System Overview
@@ -159,7 +159,7 @@ Pydantic models for the versioned JSON result format:
 
 ```
 RunResult (v2)
-├── BenchFlowInfo (version, git_sha)
+├── BenchForgeInfo (version, git_sha)
 ├── EnvironmentInfo (hostname, OS, CPU, memory, Python)
 ├── DatabaseInfo (kind, server_version, server_config)
 ├── ScenarioRef (name, signature, parsed YAML)

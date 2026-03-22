@@ -4,11 +4,11 @@
 # Steps:  build sdist + wheel → upload to PyPI via Trusted Publisher
 #
 # Setup required:
-#   1. Create a PyPI project "benchflow"
+#   1. Create a PyPI project "benchforge"
 #   2. Configure Trusted Publisher in PyPI project settings:
-#      - Repository: yeongseon/benchflow
+#      - Repository: yeongseon/benchforge
 #      - Workflow:   publish-pypi.yml
-#      - Environment: release
+#      - Environment: pypi
 
 name: Publish to PyPI
 
@@ -48,7 +48,7 @@ jobs:
     name: Publish to PyPI
     needs: build
     runs-on: ubuntu-latest
-    environment: release
+    environment: pypi
     permissions:
       id-token: write  # Required for Trusted Publisher
     steps:

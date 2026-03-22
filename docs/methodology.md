@@ -1,6 +1,6 @@
 # Statistical Methodology
 
-BenchFlow's statistical methods are designed for research-grade rigor.
+BenchForge's statistical methods are designed for research-grade rigor.
 This document describes the measurement, recording, and analysis pipeline
 so that results can be independently verified and correctly interpreted.
 
@@ -37,7 +37,7 @@ latency measurements. This is standard practice in microbenchmarking.
 
 ## HDR Histogram
 
-BenchFlow records latencies using an in-house **HDR (High Dynamic Range)
+BenchForge records latencies using an in-house **HDR (High Dynamic Range)
 histogram** — a log-linear data structure that provides:
 
 - **O(1) record** — constant-time insertion regardless of value
@@ -89,7 +89,7 @@ total += mid * count
 
 ## Reservoir Sampling
 
-For ECDF (Empirical Cumulative Distribution Function) plots, BenchFlow
+For ECDF (Empirical Cumulative Distribution Function) plots, BenchForge
 maintains a bounded reservoir sample (max 10,000 values) using
 **Vitter's Algorithm R**:
 
@@ -120,7 +120,7 @@ connection pool behavior) that aggregate statistics obscure.
 
 ## Cross-Iteration Statistics
 
-When running multiple iterations (`experiment.iterations > 1`), BenchFlow
+When running multiple iterations (`experiment.iterations > 1`), BenchForge
 computes per-step aggregate statistics across iterations:
 
 ### Metrics
@@ -148,7 +148,7 @@ This matches the methodology recommended by database benchmarking literature.
 
 ## Bootstrap Confidence Intervals
 
-BenchFlow uses the **bootstrap percentile method** for confidence intervals:
+BenchForge uses the **bootstrap percentile method** for confidence intervals:
 
 ### Algorithm
 
@@ -196,14 +196,14 @@ recommended for publication-quality results.
 
 ## Limitations and Caveats
 
-1. **Closed-loop model**: BenchFlow drives queries back-to-back (no think time).
+1. **Closed-loop model**: BenchForge drives queries back-to-back (no think time).
    This measures peak throughput, not typical application behavior.
 
 2. **Python GIL**: Concurrent worker threads share the GIL. CPU-bound
    operations may not scale linearly with concurrency. For I/O-bound
    database queries, this is typically not a bottleneck.
 
-3. **Coordinated omission**: Because BenchFlow does not inject artificial
+3. **Coordinated omission**: Because BenchForge does not inject artificial
    delays, it does not suffer from coordinated omission in the classic
    sense. However, results represent "service time," not "response time"
    under load.

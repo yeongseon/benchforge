@@ -1,7 +1,7 @@
 # AGENTS.md
 
 ## Purpose
-`benchflow` is a research-grade, scenario-based polyglot database benchmark platform for DB researchers and engineers.
+`benchforge` is a research-grade, scenario-based polyglot database benchmark platform for DB researchers and engineers.
 
 ## Read First
 - `README.md`

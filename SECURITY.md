@@ -8,14 +8,14 @@
 
 ## Reporting a Vulnerability
 
-If you discover a security vulnerability in BenchFlow, please report it responsibly.
+If you discover a security vulnerability in BenchForge, please report it responsibly.
 
 **Do NOT open a public GitHub issue for security vulnerabilities.**
 
 ### How to Report
 
 1. **Email**: Send a detailed report to the maintainer via GitHub private vulnerability reporting.
-2. **GitHub Security Advisory**: Use [GitHub's private vulnerability reporting](https://github.com/yeongseon/benchflow/security/advisories/new) to submit a report directly.
+2. **GitHub Security Advisory**: Use [GitHub's private vulnerability reporting](https://github.com/yeongseon/benchforge/security/advisories/new) to submit a report directly.
 
 ### What to Include
 
@@ -32,10 +32,10 @@ If you discover a security vulnerability in BenchFlow, please report it responsi
 
 ### Scope
 
-BenchFlow is a benchmarking tool that executes SQL queries against databases. Security considerations include:
+BenchForge is a benchmarking tool that executes SQL queries against databases. Security considerations include:
 
-- **SQL Injection**: BenchFlow executes user-defined SQL queries by design. Users are responsible for running BenchFlow only against test/benchmark databases, never against production systems with sensitive data.
-- **DSN Handling**: Database connection strings may contain credentials. BenchFlow redacts DSNs in result files, but users should avoid committing scenario files containing plaintext credentials.
+- **SQL Injection**: BenchForge executes user-defined SQL queries by design. Users are responsible for running BenchForge only against test/benchmark databases, never against production systems with sensitive data.
+- **DSN Handling**: Database connection strings may contain credentials. BenchForge redacts DSNs in result files, but users should avoid committing scenario files containing plaintext credentials.
 - **Dependency Security**: We use Dependabot to monitor and update dependencies with known vulnerabilities.
 
 ### Disclosure Policy
@@ -45,7 +45,7 @@ BenchFlow is a benchmarking tool that executes SQL queries against databases. Se
 
 ## Best Practices for Users
 
-1. **Never run BenchFlow against production databases** with real user data.
+1. **Never run BenchForge against production databases** with real user data.
 2. **Use environment variables** for DSNs instead of hardcoding credentials in scenario files.
-3. **Review scenario files** before execution — BenchFlow runs arbitrary SQL as defined in scenarios.
-4. **Keep BenchFlow updated** to benefit from security patches.
+3. **Review scenario files** before execution — BenchForge runs arbitrary SQL as defined in scenarios.
+4. **Keep BenchForge updated** to benefit from security patches.

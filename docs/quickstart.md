@@ -1,6 +1,6 @@
 # Quick Start Guide
 
-This guide walks you through installing BenchFlow, running your first benchmark,
+This guide walks you through installing BenchForge, running your first benchmark,
 and generating a publication-quality report.
 
 ## Prerequisites
@@ -9,21 +9,21 @@ and generating a publication-quality report.
 - **PostgreSQL** (or any supported database) — Docker recommended
 - **pip** or **pipx**
 
-## 1. Install BenchFlow
+## 1. Install BenchForge
 
 ```bash
 # From PyPI (once published)
-pip install benchflow
+pip install benchforge
 
 # From source (development)
-git clone https://github.com/yeongseon/benchflow.git
+git clone https://github.com/yeongseon/benchforge.git
 cd benchflow
 pip install -e ".[dev]"
 ```
 
 ## 2. Start a Database
 
-BenchFlow ships a `docker-compose.yml` for PostgreSQL 16:
+BenchForge ships a `docker-compose.yml` for PostgreSQL 16:
 
 ```bash
 docker compose up -d

@@ -1,7 +1,7 @@
-site_name: BenchFlow
-site_url: https://yeongseon.github.io/benchflow/
-repo_url: https://github.com/yeongseon/benchflow
-repo_name: yeongseon/benchflow
+site_name: BenchForge
+site_url: https://yeongseon.github.io/benchforge/
+repo_url: https://github.com/yeongseon/benchforge
+repo_name: yeongseon/benchforge
 
 theme:
   name: material

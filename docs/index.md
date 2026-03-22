@@ -1,11 +1,11 @@
-# BenchFlow
+# BenchForge
 
 Research-grade, scenario-based database benchmark platform for DB researchers and engineers.
 
 Compare different DB access stacks - driver, ORM, language - under identical workloads with statistical rigor suitable for academic publication (VLDB, SIGMOD, OSDI) and professional engineering evaluation.
 
 [:material-rocket-launch: Get started in minutes](quickstart.md){ .md-button .md-button--primary }
-[:material-github: View on GitHub](https://github.com/yeongseon/benchflow){ .md-button }
+[:material-github: View on GitHub](https://github.com/yeongseon/benchforge){ .md-button }
 
 ## Feature Highlights
 
@@ -52,18 +52,18 @@ Compare different DB access stacks - driver, ORM, language - under identical wor
 ## Quick Install
 
 ```bash
-pip install benchflow
+pip install benchforge
 ```
 
 Then follow the [Quick Start guide](quickstart.md) to run your first benchmark and generate a report.
 
-## Why BenchFlow?
+## Why BenchForge?
 
-Most benchmark scripts are ad-hoc and difficult to reproduce. BenchFlow is purpose-built for trustworthy comparisons:
+Most benchmark scripts are ad-hoc and difficult to reproduce. BenchForge is purpose-built for trustworthy comparisons:
 
 - Multi-iteration measurements with statistical confidence
 - Controlled experiment design via scenario DSL
 - Repeatable runs with deterministic seed behavior
 - Result artifacts designed for both academic and engineering review
 
-If you are new to BenchFlow, start with [Quick Start](quickstart.md), then read [Concepts](concepts.md) and [Methodology](methodology.md).
+If you are new to BenchForge, start with [Quick Start](quickstart.md), then read [Concepts](concepts.md) and [Methodology](methodology.md).

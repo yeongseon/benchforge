@@ -1,28 +1,28 @@
-# BenchFlow
+# BenchForge
 
-[![CI](https://github.com/yeongseon/benchflow/actions/workflows/ci.yml/badge.svg)](https://github.com/yeongseon/benchflow/actions/workflows/ci.yml)
-[![codecov](https://codecov.io/gh/yeongseon/benchflow/graph/badge.svg)](https://codecov.io/gh/yeongseon/benchflow)
-[![Release](https://github.com/yeongseon/benchflow/actions/workflows/publish-pypi.yml/badge.svg)](https://github.com/yeongseon/benchflow/actions/workflows/publish-pypi.yml)
-[![Security Scans](https://github.com/yeongseon/benchflow/actions/workflows/security.yml/badge.svg)](https://github.com/yeongseon/benchflow/actions/workflows/security.yml)
+[![CI](https://github.com/yeongseon/benchforge/actions/workflows/ci.yml/badge.svg)](https://github.com/yeongseon/benchforge/actions/workflows/ci.yml)
+[![codecov](https://codecov.io/gh/yeongseon/benchforge/graph/badge.svg)](https://codecov.io/gh/yeongseon/benchforge)
+[![Release](https://github.com/yeongseon/benchforge/actions/workflows/publish-pypi.yml/badge.svg)](https://github.com/yeongseon/benchforge/actions/workflows/publish-pypi.yml)
+[![Security Scans](https://github.com/yeongseon/benchforge/actions/workflows/security.yml/badge.svg)](https://github.com/yeongseon/benchforge/actions/workflows/security.yml)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
-[![PyPI](https://img.shields.io/pypi/v/benchflow.svg)](https://pypi.org/project/benchflow/)
-[![Docs](https://img.shields.io/badge/docs-GitHub%20Pages-blue)](https://yeongseon.github.io/benchflow/)
+[![PyPI](https://img.shields.io/pypi/v/benchforge.svg)](https://pypi.org/project/benchforge/)
+[![Docs](https://img.shields.io/badge/docs-GitHub%20Pages-blue)](https://yeongseon.github.io/benchforge/)
 
 Research-grade, scenario-based database benchmark platform for DB researchers and engineers.
 
 Compare different DB access stacks — driver, ORM, language — under identical workloads with statistical rigor suitable for academic publication (VLDB, SIGMOD, OSDI) and professional engineering evaluation.
 
-## Why BenchFlow?
+## Why BenchForge?
 
-Most database benchmark scripts are one-off, ad-hoc, and produce results that cannot be reproduced or trusted. BenchFlow addresses this by providing:
+Most database benchmark scripts are one-off, ad-hoc, and produce results that cannot be reproduced or trusted. BenchForge addresses this by providing:
 
 - **Statistical rigor** — Multi-iteration experiments with bootstrap confidence intervals, not single-run "eyeball" comparisons
 - **Reproducibility** — Seed control, full environment capture, setup/teardown isolation, and versioned result schemas
 - **Publication quality** — Reports designed for academic papers: ECDF plots, CI error bars, booktabs tables, colorblind-safe palette
 - **Apples-to-apples comparison** — Run the exact same workload across different drivers, ORMs, or languages with `bench compare`
 
-BenchFlow is **not** a distributed load generator, a database provisioning tool, or a replacement for TPC benchmarks. It is a focused tool for comparing database access stacks under controlled conditions.
+BenchForge is **not** a distributed load generator, a database provisioning tool, or a replacement for TPC benchmarks. It is a focused tool for comparing database access stacks under controlled conditions.
 
 ## Key Features
 
@@ -40,13 +40,13 @@ BenchFlow is **not** a distributed load generator, a database provisioning tool,
 ### From PyPI (recommended)
 
 ```bash
-pip install benchflow
+pip install benchforge
 ```
 
 ### From source (development)
 
 ```bash
-git clone https://github.com/yeongseon/benchflow.git
+git clone https://github.com/yeongseon/benchforge.git
 cd benchflow
 pip install -e ".[dev]"
 ```
@@ -54,12 +54,12 @@ pip install -e ".[dev]"
 ### With pipx (isolated install)
 
 ```bash
-pipx install benchflow
+pipx install benchforge
 ```
 
 ### Dependencies
 
-BenchFlow requires Python 3.10+ and includes the following dependencies:
+BenchForge requires Python 3.10+ and includes the following dependencies:
 
 | Package | Purpose |
 |---------|---------|
@@ -77,7 +77,7 @@ BenchFlow requires Python 3.10+ and includes the following dependencies:
 # 1. Start PostgreSQL
 docker compose up -d
 
-# 2. Install BenchFlow
+# 2. Install BenchForge
 pip install -e ".[dev]"
 
 # 3. Run a benchmark (5 iterations, seed=42)
@@ -97,7 +97,7 @@ For a detailed walkthrough, see [docs/quickstart.md](docs/quickstart.md).
 
 ## Example Scenarios
 
-BenchFlow ships with ready-to-use example scenarios in [`examples/`](examples/):
+BenchForge ships with ready-to-use example scenarios in [`examples/`](examples/):
 
 | Scenario | File | Description |
 |----------|------|-------------|
@@ -235,16 +235,16 @@ bench report <result.json> [OPTIONS]
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for development setup, testing, code style, and guidelines for adding scenarios and workers.
 
-## Citing BenchFlow
+## Citing BenchForge
 
-If you use BenchFlow in your research, please cite it:
+If you use BenchForge in your research, please cite it:
 
 ```bibtex
 @software{choe2026benchflow,
-  title  = {BenchFlow: Research-Grade Database Benchmark Platform},
+  title  = {BenchForge: Research-Grade Database Benchmark Platform},
   author = {Choe, Yeongseon},
   year   = {2026},
-  url    = {https://github.com/yeongseon/benchflow},
+  url    = {https://github.com/yeongseon/benchforge},
 }
 ```
 

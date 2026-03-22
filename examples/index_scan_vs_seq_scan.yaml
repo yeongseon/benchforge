@@ -72,9 +72,9 @@ targets:
   - name: psycopg-raw
     stack_id: python+psycopg
     driver: psycopg
-    dsn: "postgresql://postgres:postgres@localhost:5432/benchflow"
+    dsn: "postgresql://postgres:postgres@localhost:5432/benchforge"
 
   - name: sqlalchemy-core
     stack_id: python+sqlalchemy
     driver: sqlalchemy
-    dsn: "postgresql+psycopg://postgres:postgres@localhost:5432/benchflow"
+    dsn: "postgresql+psycopg://postgres:postgres@localhost:5432/benchforge"

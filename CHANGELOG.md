@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to BenchFlow will be documented in this file.
+All notable changes to BenchForge will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
@@ -36,5 +36,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Documentation**: Quick start, concepts, methodology, reproducibility guide, scenario reference, architecture overview
 - **Example scenarios**: OLTP point lookups, analytical aggregation, connection pool stress, mixed read/write, index vs sequential scan
 
-[Unreleased]: https://github.com/yeongseon/benchflow/compare/v0.1.0...HEAD
-[0.1.0]: https://github.com/yeongseon/benchflow/releases/tag/v0.1.0
+[Unreleased]: https://github.com/yeongseon/benchforge/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/yeongseon/benchforge/releases/tag/v0.1.0

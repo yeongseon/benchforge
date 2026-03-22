@@ -1,5 +1,5 @@
 [project]
-name = "benchflow"
+name = "benchforge"
 version = "0.1.0"
 description = "Scenario-based polyglot database benchmark platform"
 readme = "README.md"
@@ -59,11 +59,11 @@ dev = [
 bench = "benchflow.cli.main:app"
 
 [project.urls]
-Homepage = "https://yeongseon.github.io/benchflow/"
-Repository = "https://github.com/yeongseon/benchflow"
-Documentation = "https://yeongseon.github.io/benchflow/"
-"Bug Tracker" = "https://github.com/yeongseon/benchflow/issues"
-Changelog = "https://github.com/yeongseon/benchflow/blob/main/CHANGELOG.md"
+Homepage = "https://yeongseon.github.io/benchforge/"
+Repository = "https://github.com/yeongseon/benchforge"
+Documentation = "https://yeongseon.github.io/benchforge/"
+"Bug Tracker" = "https://github.com/yeongseon/benchforge/issues"
+Changelog = "https://github.com/yeongseon/benchforge/blob/main/CHANGELOG.md"
 
 [tool.ruff]
 line-length = 100

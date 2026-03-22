@@ -1,12 +1,12 @@
-# Contributing to BenchFlow
+# Contributing to BenchForge
 
-Thank you for considering contributing to BenchFlow! This guide will help you get started.
+Thank you for considering contributing to BenchForge! This guide will help you get started.
 
 ## Development Setup
 
 ```bash
 # Clone the repository
-git clone https://github.com/yeongseon/benchflow.git
+git clone https://github.com/yeongseon/benchforge.git
 cd benchflow
 
 # Create a virtual environment
@@ -97,7 +97,7 @@ When sharing benchmark results (in issues, papers, or discussions):
 
 - **Always include** the full environment info from the report (CPU, memory, OS, DB version)
 - **Always include** the scenario YAML used
-- **Always specify** the BenchFlow version and random seed
+- **Always specify** the BenchForge version and random seed
 - **Never compare** results across different hardware without explicit disclaimers
 - **Prefer** multi-iteration runs (5+ iterations) with CI error bars over single-run numbers
 
@@ -114,7 +114,7 @@ When sharing benchmark results (in issues, papers, or discussions):
 
 Use the issue templates provided. For benchmark-related issues, include:
 
-- BenchFlow version (`bench --version`)
+- BenchForge version (`bench --version`)
 - Python version
 - OS and hardware info
 - Database type and version
@@ -123,4 +123,4 @@ Use the issue templates provided. For benchmark-related issues, include:
 
 ## License
 
-By contributing to BenchFlow, you agree that your contributions will be licensed under the MIT License.
+By contributing to BenchForge, you agree that your contributions will be licensed under the MIT License.

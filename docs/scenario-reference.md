@@ -1,12 +1,12 @@
 # Scenario DSL Reference
 
-This is the complete specification of BenchFlow's scenario YAML format.
+This is the complete specification of BenchForge's scenario YAML format.
 Researchers should treat this as a contract — the schema is versioned and
 backward-compatible changes will be documented.
 
 ## Schema Version
 
-Current schema version: **2** (BenchFlow 0.1.x)
+Current schema version: **2** (BenchForge 0.1.x)
 
 ## Complete Schema
 
@@ -133,7 +133,7 @@ comparison output.
 #### `steps[].query` (required)
 
 SQL query string. Use `%(param_name)s` syntax for parameterized queries.
-BenchFlow translates this to the appropriate driver syntax:
+BenchForge translates this to the appropriate driver syntax:
 - **psycopg**: `%(param_name)s` (native)
 - **SQLAlchemy**: `:param_name` (auto-translated)
 
@@ -276,7 +276,7 @@ Optional dictionary of driver-specific configuration. Passed to
 
 ## Validation
 
-BenchFlow validates all scenario files against Pydantic models at load time.
+BenchForge validates all scenario files against Pydantic models at load time.
 Invalid scenarios produce clear error messages:
 
 ```

@@ -1,6 +1,6 @@
 # Core Concepts
 
-This document explains the fundamental abstractions in BenchFlow. Understanding
+This document explains the fundamental abstractions in BenchForge. Understanding
 these concepts is essential for writing effective scenarios and interpreting results.
 
 ## Scenario
@@ -19,7 +19,7 @@ A **scenario** is a YAML file that fully describes a benchmark experiment. It co
 | `targets` | Database access stacks to benchmark |
 
 A scenario is the **unit of reproducibility**. Given the same scenario file and
-database state, BenchFlow produces comparable results across runs.
+database state, BenchForge produces comparable results across runs.
 
 ## Step
 
@@ -34,7 +34,7 @@ Latency is measured per-step, not per-query-type.
 
 ### Parameter Generators
 
-BenchFlow supports inline parameter generation in the scenario DSL:
+BenchForge supports inline parameter generation in the scenario DSL:
 
 | Generator | Example | Description |
 |-----------|---------|-------------|
@@ -102,7 +102,7 @@ Each iteration:
 3. Measures the workload for the configured duration
 4. Executes teardown queries (if defined)
 
-Between iterations, BenchFlow pauses for `pause_between` seconds (default 5.0)
+Between iterations, BenchForge pauses for `pause_between` seconds (default 5.0)
 to allow OS and database caches to stabilize.
 
 ## Experiment
@@ -124,7 +124,7 @@ experiment:
 
 ## Result Schema
 
-BenchFlow uses a versioned JSON result schema (currently v2). Key models:
+BenchForge uses a versioned JSON result schema (currently v2). Key models:
 
 | Model | Description |
 |-------|-------------|
@@ -140,7 +140,7 @@ further analysis with external tools.
 
 ## Load Profile
 
-The **load profile** controls how BenchFlow drives the workload:
+The **load profile** controls how BenchForge drives the workload:
 
 ```yaml
 load:
@@ -150,7 +150,7 @@ load:
     duration: 3        # Warmup duration in seconds (excluded from measurement)
 ```
 
-BenchFlow uses a **closed-loop** model: each thread executes queries back-to-back
+BenchForge uses a **closed-loop** model: each thread executes queries back-to-back
 as fast as possible (no artificial think time). This measures maximum throughput
 under the given concurrency level.
 
