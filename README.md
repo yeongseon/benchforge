@@ -1,6 +1,9 @@
 # BenchFlow
 
 [![CI](https://github.com/yeongseon/benchflow/actions/workflows/ci.yml/badge.svg)](https://github.com/yeongseon/benchflow/actions/workflows/ci.yml)
+[![codecov](https://codecov.io/gh/yeongseon/benchflow/graph/badge.svg)](https://codecov.io/gh/yeongseon/benchflow)
+[![Release](https://github.com/yeongseon/benchflow/actions/workflows/publish-pypi.yml/badge.svg)](https://github.com/yeongseon/benchflow/actions/workflows/publish-pypi.yml)
+[![Security Scans](https://github.com/yeongseon/benchflow/actions/workflows/security.yml/badge.svg)](https://github.com/yeongseon/benchflow/actions/workflows/security.yml)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![PyPI](https://img.shields.io/pypi/v/benchflow.svg)](https://pypi.org/project/benchflow/)
