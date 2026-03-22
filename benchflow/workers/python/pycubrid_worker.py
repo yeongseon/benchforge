@@ -62,7 +62,8 @@ class PyCUBRIDWorker(Worker):
                 cursor.execute(query, ordered_params)
             else:
                 cursor.execute(step.query)
-            cursor.fetchall()
+            if cursor.description is not None:
+                cursor.fetchall()
         finally:
             cursor.close()
 
