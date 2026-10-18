@@ -6,6 +6,10 @@ labels: enhancement
 assignees: ''
 ---
 
+> Keep this report focused on BenchForge's behavior or responsibilities.
+> Explain why any linked project or source is relevant, and include measured
+> evidence for numerical claims. See [Issue Scope](https://github.com/yeongseon/benchforge/blob/main/AGENTS.md#issue-scope).
+
 ## Problem
 
 A clear description of the problem this feature would solve.

@@ -112,6 +112,11 @@ When sharing benchmark results (in issues, papers, or discussions):
 
 ## Reporting Issues
 
+Follow [Issue Scope in AGENTS.md](AGENTS.md#issue-scope), including the checks
+before and after publishing. Explain BenchForge's own problem and completion
+criteria. Link drivers, tools, papers, and benchmarks when their relevance to
+the reported behavior or proposed work is clear.
+
 Use the issue templates provided. For benchmark-related issues, include:
 
 - BenchForge version (`bench --version`)
